@@ -1,33 +1,33 @@
-let products = []; // Array para almacenar los productos
-let priceOptions = []; // Array para almacenar las opciones de precio predeterminado
+let products = []; // Almacenar los productos
+let priceOptions = []; // Almacenar las opciones de precio predeterminado
 
-// Función para mostrar un mensaje de error
+// Mostrar un mensaje de error
 function mostrarError(mensaje) {
   const mensajeElemento = document.getElementById("mensaje");
   mensajeElemento.textContent = mensaje;
   mensajeElemento.style.display = "block";
 }
 
-// Función para ocultar el mensaje
+// Ocultar el mensaje
 function ocultarMensaje() {
   const mensajeElemento = document.getElementById("mensaje");
   mensajeElemento.style.display = "none";
 }
 
-// Función para actualizar el precio según la opción seleccionada
+// Actualizar el precio según la opción seleccionada
 function actualizarPrecio() {
     const opcionesPrecio = document.getElementById("opcionesPrecio");
     const precioManual = document.getElementById("precioManual");
   
     if (opcionesPrecio.value !== "") {
-      precioManual.value = opcionesPrecio.value; // Asignar el valor seleccionado al campo manual
+      precioManual.value = opcionesPrecio.value; 
       precioManual.disabled = true;
     } else {
       precioManual.disabled = false;
     }
   }
 
-// Función para calcular el total de los productos
+// Calcular el total de los productos
 function calcularTotal() {
   let total = 0;
 
@@ -38,7 +38,7 @@ function calcularTotal() {
   return total;
 }
 
-// Función para actualizar el valor total
+// Actualizar el valor total
 function actualizarTotal() {
   const totalElemento = document.getElementById("total");
   totalElemento.textContent = `Total: ${calcularTotal().toLocaleString("en-US", {
@@ -47,7 +47,7 @@ function actualizarTotal() {
   })}`;
 }
 
-// Función para agregar un producto
+// Agregar un producto
 function agregarProducto() {
     const productoNombre = document.getElementById("productoNombre").value.trim();
     const opcionesPrecio = document.getElementById("opcionesPrecio").value;
@@ -95,8 +95,8 @@ function agregarProducto() {
     // Limpiar campos
     document.getElementById("productoNombre").value = "";
     document.getElementById("opcionesPrecio").value = "";
-    document.getElementById("precioManual").disabled = false; // Habilitar el campo manual siempre al agregar un producto
-    document.getElementById("precioManual").value = ""; // Limpiar el campo manual
+    document.getElementById("precioManual").disabled = false; 
+    document.getElementById("precioManual").value = ""; 
     document.getElementById("productoCantidad").value = "";
   
     // Actualizar total
@@ -104,7 +104,7 @@ function agregarProducto() {
     ocultarMensaje();
   }
 
-// Función para eliminar un producto
+// Eliminar un producto
 function eliminarProducto(rowIndex) {
   products.splice(rowIndex, 1);
   guardarProductosEnLocalStorage();
@@ -112,15 +112,15 @@ function eliminarProducto(rowIndex) {
   actualizarTotal();
 }
 
-// Función para guardar los productos en el Local Storage
+// Guardar los productos en el Local Storage
 function guardarProductosEnLocalStorage() {
     localStorage.setItem("products", JSON.stringify(products));
   }
 
-// Función para cargar las opciones de precio predeterminado desde el archivo JSON utilizando fetch y promesas
+// Cargar las opciones de precio predeterminado desde el archivo JSON utilizando fetch y promesas
 function cargarOpcionesPrecioDesdeJSON() {
     return new Promise((resolve, reject) => {
-      fetch("JSON/data.json") // Modificar la ruta al archivo "data.json" dentro de la carpeta "JSON"
+      fetch("JSON/data.json") 
         .then(response => {
           if (!response.ok) {
             throw new Error("Error al cargar las opciones de precio");
@@ -138,7 +138,7 @@ function cargarOpcionesPrecioDesdeJSON() {
     });
   }
 
-// Función para llenar el elemento <select> con las opciones de precio predeterminado
+// Llenar el elemento "select" con las opciones de precio predeterminado
 function llenarSelectOpcionesPrecio() {
     const opcionesPrecioSelect = document.getElementById("opcionesPrecio");
     opcionesPrecioSelect.innerHTML = '<option value="" disabled selected>Selecciona un precio</option>';
@@ -151,7 +151,7 @@ function llenarSelectOpcionesPrecio() {
     }
   }
 
-// Función para cargar los productos desde el Local Storage
+// Cargar los productos desde el Local Storage
 function cargarProductosDesdeLocalStorage() {
     return new Promise((resolve, reject) => {
       const productosGuardados = localStorage.getItem("products");
@@ -163,7 +163,7 @@ function cargarProductosDesdeLocalStorage() {
       resolve();
     });
   }
-// Función para mostrar los productos en la tabla
+// Mostrar los productos en la tabla
 function mostrarProductosEnTabla() {
   const table = document.getElementById("productTable").getElementsByTagName("tbody")[0];
   table.innerHTML = "";
@@ -207,7 +207,7 @@ function mostrarProductosEnTabla() {
   }
 }
 
-// Función para exportar la tabla a un archivo Excel
+// Exportar la tabla a un archivo Excel - librería SheetJS (XLSX)
 function exportarTablaExcel() {
   const table = document.getElementById("productTable");
   const workbook = XLSX.utils.table_to_book(table, { sheet: "Productos" });
@@ -226,7 +226,7 @@ async function init() {
       agregarProducto();
     });
   
-    await cargarProductosDesdeLocalStorage(); // Esperar a que los productos se carguen desde el Local Storage
+    await cargarProductosDesdeLocalStorage(); 
   }
 
 // Ejecutar la función de inicialización
