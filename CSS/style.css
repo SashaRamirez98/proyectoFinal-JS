@@ -1,0 +1,137 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url(../recursos/back-2.jpg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+  }
+  
+  h1 {
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  /* Formulario */
+  form {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 10px;
+    color: #555;
+    text-align: center;
+    flex-basis: 100%;
+    font-weight: bold;
+  }
+  
+  input[type="text"],
+  input[type="number"],
+  select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 200px;
+    margin-bottom: 10px;
+    text-align: center;
+    box-sizing: border-box;
+  }
+  
+  #precioManual {
+    width: 200px;
+    margin-bottom: 10px;
+  }
+  
+  button {
+    padding: 10px 20px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  
+  /* Tabla */
+  table {
+    border-collapse: collapse;
+    width: 90%;
+    padding: 5%;
+    margin: 5%;
+    background-color: #55555571;
+  }
+  
+  th,
+  td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: center;
+  }
+  
+  
+  th {
+    background-color: #f2f2f2;
+    color: #555;
+  }
+  
+  /* Mensaje de error */
+  #mensaje {
+    display: none;
+    color: red;
+    margin-bottom: 10px;
+  }
+  
+  /* Total */
+  #total {
+    margin-top: 20px;
+    font-size: 18px;
+    text-align: center;
+    background-color: #555;
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    color: white;
+    padding: 10px;
+  }
+  
+  /* Botones */
+  .botones {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .botones button:not(:last-child) {
+    margin-right: 10px;
+  }
+  
+  /* Botón de descarga */
+  button:nth-of-type(2) {
+    margin-left: 0;
+    background-color: #2196f3;
+  }
+  
+  button:nth-of-type(2):hover {
+    background-color: #1e88e5;
+  }
+  
+  /* Estilos para dispositivos móviles */
+  @media screen and (max-width: 600px) {
+    input[type="text"],
+    input[type="number"],
+    select {
+      width: 100%;
+    }
+  }
